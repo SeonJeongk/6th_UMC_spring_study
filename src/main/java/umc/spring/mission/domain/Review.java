@@ -2,6 +2,7 @@ package umc.spring.mission.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.mission.domain.common.BaseEntity;
 import umc.spring.mission.domain.mapping.ReviewImage;
 import umc.spring.mission.domain.mapping.ReviewReply;
@@ -31,8 +32,8 @@ public class Review extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private Float rating = 0.0F;
+    @ColumnDefault("0.0F")
+    private Float rating;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     private List<ReviewImage> reviewImageList = new ArrayList<>();

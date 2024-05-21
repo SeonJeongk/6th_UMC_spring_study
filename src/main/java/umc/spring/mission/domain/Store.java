@@ -2,6 +2,7 @@ package umc.spring.mission.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.mission.domain.common.BaseEntity;
 
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class Store extends BaseEntity {
     @Column(nullable = false, length = 80)
     private String address;
 
-    @Column(nullable = false)
-    private Float rating = 0.0F;
+    @ColumnDefault("0.0F")
+    private Float rating;
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();

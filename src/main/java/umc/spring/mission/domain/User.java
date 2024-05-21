@@ -2,6 +2,7 @@ package umc.spring.mission.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.mission.domain.common.BaseEntity;
 import umc.spring.mission.domain.enums.Gender;
 import umc.spring.mission.domain.enums.MemberStatus;
@@ -43,8 +44,8 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String email;
 
-    @Column(nullable = false)
-    private Integer point = 0;
+    @ColumnDefault("0")
+    private Integer point;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(50)")
